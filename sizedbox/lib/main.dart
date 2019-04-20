@@ -34,12 +34,30 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: sizedBoxVisible(),
+      body: SizedBox(
+        width: double.infinity,
+        height: 200.0,
+        child: Card(
+            child: Center(child: Text('Hello World!',style: TextStyle(color: Colors.white),),),
+            color: Colors.green
+        ),
+      ),
     );
   }
 
   Widget sizedBoxExpand(){
     return SizedBox.expand(
+      child: Card(
+          child: Center(child: Text('Hello World!',style: TextStyle(color: Colors.white),),),
+          color: Colors.green
+      ),
+    );
+  }
+
+  Widget sizedBoxWithSize(){
+    return SizedBox(
+      width: 200.0,
+      height: 200.0,
       child: Card(
           child: Center(child: Text('Hello World!',style: TextStyle(color: Colors.white),),),
           color: Colors.green
