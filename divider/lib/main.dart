@@ -34,47 +34,71 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: new ListView.separated(
-          separatorBuilder: (context, index) => Divider(
+      body: new Column(
+        children: <Widget>[
+          new Container(
+            width: double.infinity,
+            height: 200,
+            color: Colors.green,
+          ),
+          const Divider(
             color: Colors.black,
             indent: 20.0,
-            height: 0.0,
+            height: 10.0,
           ),
-          itemCount: 50,
-          itemBuilder: (BuildContext context, int index) {
-            return new GestureDetector(
-              child: new Padding(
-                padding: EdgeInsets.all(20.0),
-                child: Center(child: Text("Index $index")),
-              ),
-              onTap: () {
-                showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    child: new CupertinoAlertDialog(
-                      title: new Column(
-                        children: <Widget>[
-                          new Text("Divider"),
-                          new Icon(
-                            Icons.favorite,
-                            color: Colors.green,
-                          )
-                        ],
-                      ),
-                      content: new Text("Selected Item $index"),
-                      actions: <Widget>[
-                        new FlatButton(onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                            child: new Text("OK")
+          new Container(
+            width: double.infinity,
+            height: 200,
+            color: Colors.green,
+          ),
+        ],
+      ),
+    );
+  }
+
+
+
+  Widget dividerListView(){
+    return new ListView.separated(
+        separatorBuilder: (context, index) => Divider(
+          color: Colors.black,
+          indent: 20.0,
+          height: 0.0,
+        ),
+        itemCount: 50,
+        itemBuilder: (BuildContext context, int index) {
+          return new GestureDetector(
+            child: new Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Center(child: Text("Index $index")),
+            ),
+            onTap: () {
+              showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  child: new CupertinoAlertDialog(
+                    title: new Column(
+                      children: <Widget>[
+                        new Text("Divider"),
+                        new Icon(
+                          Icons.favorite,
+                          color: Colors.green,
                         )
                       ],
-                    )
-                );
-              },
-            );
-          }
-      ),
+                    ),
+                    content: new Text("Selected Item $index"),
+                    actions: <Widget>[
+                      new FlatButton(onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                          child: new Text("OK")
+                      )
+                    ],
+                  )
+              );
+            },
+          );
+        }
     );
   }
 }
